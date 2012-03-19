@@ -1,8 +1,8 @@
-digraph workflow {
+graph workflow {
     size=6.15!;
     dpi=300;
     fontname="Cabin";
-    node [fontname="Cabin",shape=record,style=rounded];
+    node [fontname="Cabin",shape=record,style=rounded,];
     edge [fontname="Cabin",arrowhead=open];
 
     create [label="{CREATE|{init|clone}}"];
@@ -14,21 +14,20 @@ digraph workflow {
     commit [label="{COMMIT|commit}"];
     publish [label="{PUBLISH|{push|format-patch}}"];
 
-    create -> browse;
-    create -> change;
-    create -> revert;
+    create -- browse;
+    create -- change;
 
-    change -> revert;
-    change -> update;
-    change -> commit;
+    change -- revert;
+    change -- update;
+    change -- commit;
 
-    revert -> branch;
-    revert -> commit;
+    revert -- branch;
+    revert -- commit;
 
-    update -> branch;
-    update -> commit;
+    update -- branch;
+    update -- commit;
 
-    branch -> commit;
+    branch -- commit;
 
-    commit -> publish;
+    commit -- publish;
 }
