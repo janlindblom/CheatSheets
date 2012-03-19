@@ -1,0 +1,411 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title> Table of Contents 
+
+ 
+  Create  
+  Browse  
+  Revert  
+  Update  
+  Commit  
+  </title>
+</head>
+<body>
+<h2>Table of Contents</h2>
+
+<ul>
+<li><a href="#create">Create</a></li>
+<li><a href="#browse">Browse</a></li>
+<li><a href="#revert">Revert</a></li>
+<li><a href="#update">Update</a></li>
+<li><a href="#commit">Commit</a></li>
+<li><a href="#publish">Publish</a></li>
+<li><a href="#branch">Branch</a></li>
+<li><a href="#config">Configuration</a></li>
+<li><a href="#resolve">Resolve merge conflicts</a></li>
+<li><a href="#tips">Useful tips</a></li>
+</ul>
+
+
+<h2>Create</h2>
+
+<h4>From existing data</h4>
+
+<pre><code>cd ~/my_project_dir
+git init
+git add .
+</code></pre>
+
+<h4>From existing repo</h4>
+
+<pre><code>git clone ~/existing_repo ~/new_repo
+git clone you@github.com:you/project.git
+</code></pre>
+
+<h2>Browse</h2>
+
+<h4>Files changed in working directory</h4>
+
+<pre><code>git status
+</code></pre>
+
+<h4>Changes to tracked files</h4>
+
+<pre><code>git diff
+</code></pre>
+
+<h4>Changes between ID1 and ID2</h4>
+
+<pre><code>git diff &lt;ID1&gt; &lt;ID2&gt;
+</code></pre>
+
+<h4>History of changes</h4>
+
+<pre><code>git log
+</code></pre>
+
+<h4>Who changed what and when in a file</h4>
+
+<pre><code>git blame &lt;file&gt;
+</code></pre>
+
+<h4>A commit identified by ID</h4>
+
+<pre><code>git show &lt;ID&gt;
+</code></pre>
+
+<h4>A specific file from a specific ID</h4>
+
+<pre><code>git diff &lt;ID&gt;:&lt;FILE&gt;
+</code></pre>
+
+<h4>Search for patterns</h4>
+
+<pre><code>git grep &lt;pattern&gt; [path]
+</code></pre>
+
+<h2>Revert</h2>
+
+<h4>Return to the last committed state</h4>
+
+<pre><code>git checkout -f | git reset --hard
+</code></pre>
+
+<h4>Revert the last commit</h4>
+
+<pre><code>git revert HEAD
+</code></pre>
+
+<h4>Revert specific commit</h4>
+
+<pre><code>git revert $id
+</code></pre>
+
+<h4>Fix the last commit</h4>
+
+<pre><code>git commit -a --amend
+</code></pre>
+
+<h4>Checkout the ID version of a file</h4>
+
+<pre><code>git checkout &lt;ID&gt; &lt;file&gt;
+</code></pre>
+
+<h2>Update</h2>
+
+<h4>Fetch latest changes from origin</h4>
+
+<pre><code>git fetch
+</code></pre>
+
+<h4>Pull latest changes from origin</h4>
+
+<pre><code>git pull
+</code></pre>
+
+<h4>Apply a patch that someone sent you</h4>
+
+<pre><code>git am -3 patch.mbox
+</code></pre>
+
+<h4>In case of conflict, resolve the conflict and</h4>
+
+<pre><code>git am --resolve
+</code></pre>
+
+<h2>Commit</h2>
+
+<h4>Commit all local changes</h4>
+
+<pre><code>git commit -a
+</code></pre>
+
+<h2>Publish</h2>
+
+<h4>Prepare a patch for other developers</h4>
+
+<pre><code>git format-patch origin
+</code></pre>
+
+<h4>Push changes to origin</h4>
+
+<pre><code>git push [origin] [branch]
+</code></pre>
+
+<h4>Make a version or milestone</h4>
+
+<pre><code>git tag &lt;version_name&gt;
+</code></pre>
+
+<h2>Branch</h2>
+
+<h4>List all branches</h4>
+
+<pre><code>git branch
+</code></pre>
+
+<h4>Switch to the BRANCH branch</h4>
+
+<pre><code>git checkout &lt;BRANCH&gt;
+</code></pre>
+
+<h4>Merge branch B1 into branch B2</h4>
+
+<pre><code>git checkout &lt;B2&gt;
+git merge &lt;B1&gt;
+</code></pre>
+
+<h4>Create branch based on HEAD</h4>
+
+<pre><code>git branch &lt;BRANCH&gt;
+</code></pre>
+
+<h4>Create branch based on another</h4>
+
+<pre><code>git branch &lt;new&gt; &lt;base&gt;
+</code></pre>
+
+<h4>Delete a branch</h4>
+
+<pre><code>git branch -d &lt;branch&gt;
+</code></pre>
+
+<h2>Configuration</h2>
+
+<pre><code>git config [--global]
+</code></pre>
+
+<h4>user</h4>
+
+<pre><code>user.name $name
+user.email $email
+</code></pre>
+
+<h4>color</h4>
+
+<pre><code>color.ui auto
+</code></pre>
+
+<h4>github</h4>
+
+<pre><code>github.user $user
+github.token $token
+</code></pre>
+
+<h4>optimisation</h4>
+
+<pre><code>pack.threads 0
+diff.renamelimit 0
+</code></pre>
+
+<h4>windows</h4>
+
+<pre><code>core.autocrlf true
+</code></pre>
+
+<h2>Resolve merge conflicts</h2>
+
+<h4>View merge conflicts</h4>
+
+<pre><code>git diff
+</code></pre>
+
+<h4>View merge conflicts against base file</h4>
+
+<pre><code>git diff --base &lt;FILE&gt;
+</code></pre>
+
+<h4>View merge conflicts against other changes</h4>
+
+<pre><code>git diff --theirs &lt;FILE&gt;
+</code></pre>
+
+<h4>View merge conflicts against your changes</h4>
+
+<pre><code>git diff --ours &lt;FILE&gt;
+</code></pre>
+
+<h4>After resolving conflicts, merge with</h4>
+
+<pre><code>git add &lt;CONFLICTING_FILE&gt;
+git rebase --continue
+</code></pre>
+
+<h2>Useful tips</h2>
+
+<h4>Get help</h4>
+
+<pre><code>git help [command]
+</code></pre>
+
+<h4>Create empty branch</h4>
+
+<pre><code>git symbolic-ref HEAD
+refs/heads/newbranch
+rm .git/index
+git clean -fdx
+&lt;do work&gt;
+git add your files
+git commit -m 'Initial commit'
+</code></pre>
+
+<h4>Graphical log</h4>
+
+<pre><code>git log --graph
+git log --graph --pretty=oneline -- abbrev-commit
+</code></pre>
+
+<h4>Push branch to remote</h4>
+
+<pre><code>git push &lt;origin&gt; &lt;branch&gt;
+</code></pre>
+
+<h4>Delete remote branch and locally</h4>
+
+<pre><code>git push &lt;origin&gt; :&lt;branch&gt;
+git branch -d &lt;branch&gt;
+</code></pre>
+</body>
+</html>
